@@ -22,8 +22,11 @@ class Conta:
             self.__saldo -= valor
 
     def extrato(self):
-            print(f"Saldo do titular {self.__titular}: {self.__saldo}")
+            print(f"Saldo: {self.__saldo}")
 
     def transferir(self, valor, destino):
-        self.sacar(valor)
-        destino.depositar(valor)
+        if self.self.__saldo < valor or (valor <= 0):
+            print("Saldo Insuficiente")
+        else:
+            self.sacar(valor)
+            destino.depositar(valor)
