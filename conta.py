@@ -54,9 +54,13 @@ class Conta:
     def limite(self):
         return self.__limite
     
-    @property
-    def codigo_banco(self):
-        return self.__limite
+    @staticmethod
+    def codigo_banco():
+        return '001'
+    
+    @staticmethod
+    def codigos_bancos():
+        return {'BB':'001', 'Caixa':'104', 'Nubank':'260'}
 
     # Redefinindo valor das variáveis
     @limite.setter
