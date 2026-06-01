@@ -3,19 +3,19 @@ class Conta:
         self.__numero = numero
         self.__titular = titular
         self.__saldo = saldo
-        self.__limite = limite
+        self.__limite_especial = limite
         self.__codigo_banco = '001'
 
     # Declaração dos métodos (funções)
 
     def depositar(self, valorDep):
-        if (valorDep < 0):
+        if (valorDep <= 0):
             print("Não existe número negativo seu burro!")
         else:
             self.__saldo += valorDep
 
     def __saque_permitido(self, valor_saque):
-        valor_disponivel_saque = self.__saldo + self.__limite
+        valor_disponivel_saque = self.__saldo + self.__limite_especial
         return valor_saque <= valor_disponivel_saque
 
     def sacar(self, valor):
@@ -30,11 +30,12 @@ class Conta:
         print(f"Saldo: {self.__saldo}")
 
     def transferir(self, valor, destino):
-        if self.__saldo < valor or (valor <= 0):
-            print("Saldo Insuficiente")
-        else:
+        if (self.__saque_permitido(valor)):
             self.sacar(valor)
             destino.depositar(valor)
+            
+        else:
+            print("Saldo Insuficiente")
     # Método para retornar apenas valores das propriedades
     # valores das propriedades
 
@@ -52,7 +53,7 @@ class Conta:
 
     @property
     def limite(self):
-        return self.__limite
+        return self.__limite_especial
     
     @staticmethod
     def codigo_banco():
@@ -65,4 +66,4 @@ class Conta:
     # Redefinindo valor das variáveis
     @limite.setter
     def limite(self, limite):
-        self.__limite = limite
+        self.__limite_especial = limite
