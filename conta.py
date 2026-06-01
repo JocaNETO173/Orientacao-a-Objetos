@@ -4,7 +4,6 @@ class Conta:
         self.__titular = titular
         self.__saldo = saldo
         self.__limite_especial = limite
-        self.__codigo_banco = '001'
 
     # Declaração dos métodos (funções)
 
